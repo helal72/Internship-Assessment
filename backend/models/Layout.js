@@ -6,21 +6,41 @@ const LayoutSchema = new Schema({
        type: mongoose.Schema.Types.ObjectId,
        ref: "user"
     },
-    fname:{
+    productName:{
         type: String,
         required: true
     },
-    date:{
+    sku:{
         type: String,
         required: true
     },
-    email:{
+    category:{
+        type: String,
+        required: true, 
+    },
+    size:{
+        type: String,
+        required: true, 
+    },
+    color:{
+        type: String,
+        required: true, 
+    },
+    sDiscription:{
+        type: String,
+        required: true, 
+    },
+    lDescription:{
         type: String,
         required: true, 
     },
     phone:{
         type: String,
-        default: "General"
+        required: true, 
+    },
+    file:{
+        contentType: String,
+        data: Buffer, 
     }
   });
 

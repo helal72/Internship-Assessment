@@ -6,6 +6,7 @@ const LayoutState = (props) => {
     const layoutInitial = []
     const [layouts, setLayouts] = useState(layoutInitial)
     //fetch all notes
+
     const getLayouts = async () => {
         const response = await fetch(`${host}/api/layouts/fetchalllayout`, {
             method: "GET",
@@ -20,20 +21,20 @@ const LayoutState = (props) => {
 
 
     //add note
-    const addLayouts = async (fname, date, email, phone) => {
+    const addLayouts = async (productName, sku, category, size, color, sDiscription, lDescription, phone, files) => {
         const response = await fetch(`${host}/api/layouts/addlayout`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
                 "auth-token": localStorage.getItem("token")
             },
-            body: JSON.stringify({ fname, date, email, phone })
+            body: JSON.stringify({productName, sku, category, size, color, sDiscription, lDescription, phone, files})
         });
         const note = await response.json()
         setLayouts(layouts.concat(note))
     }
     return (
-        <LayoutContext.Provider value={{ layouts, getLayouts, addLayouts}}>
+        <LayoutContext.Provider value={{ layouts, addLayouts, getLayouts}}>
             {props.children}
         </LayoutContext.Provider>
     )
